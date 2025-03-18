@@ -14,14 +14,10 @@ class QuickExport(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        
-        print("Hello I Updated 2")
         name_of_first_object = bpy.context.selected_objects[0]
-        #print(context.scene.worth_group_tools.dir_path)
         
         file_path = bpy.data.filepath
         directory_path = os.path.dirname(file_path)
-        print(directory_path)
         
         # Export locations
         export_directory = os.path.join(directory_path, "Exports" + os.path.sep)
@@ -32,9 +28,7 @@ class QuickExport(bpy.types.Operator):
         
         bpy.ops.export_scene.fbx(filepath=export_file_path, use_selection=True)
         
-        print("Exported: ")
-        print(export_directory)
-        print(export_file_path)
+        print("Successfully exported to: " + export_file_path)
 
         return {'FINISHED'} # Operation was a success!
 
